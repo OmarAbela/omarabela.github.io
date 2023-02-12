@@ -1,0 +1,583 @@
+/*=================================================
+All components that not consitute the layout of the
+page are styled here
+===================================================*/
+
+div.bubbleWrapper {
+	position: absolute;
+    padding: 8px;
+
+    @include respond-to(tablet) {
+    	display:none;
+    }
+
+	.bubbleAnimate {
+	    width: 108px;
+	    height: 108px;
+	    cursor:pointer;
+
+	    &:hover > .bubViolet, &:hover > .bubPink, &:hover > .bubBlue {
+	    	-webkit-filter: blur(9px);
+	    }
+
+		span.text {
+		    position: absolute;
+		    top: 0;
+		    bottom: 0;
+		    left: 0;
+		    right: 0;
+		    margin: auto;
+		    text-align: center;
+		    height: 32px;
+		    width: 47px;
+		    color: #fff;
+		    font-size: 12px;
+		}
+	}
+
+	.bubBlue {
+		background: rgba(39, 99, 253, 0.6);
+	    left: 19px;
+	    top: 15px;
+	    animation: circling 8s linear forwards infinite;
+	    transform-origin: 38px;
+	}
+
+	.bubViolet, .bubPink, .bubBlue {
+		width: 72px;
+    	height: 72px;
+		border-radius: 70px;
+		position: absolute;
+		z-index: -1;
+	}
+
+	.bubViolet{
+		background: rgba(231, 16, 249, 0.7);
+	    top: 22px;
+	    right: 2px;
+	    animation: doubleCicle 50s linear reverse infinite;
+	    transform-origin: 29px;
+	}
+
+	.bubPink{
+		background: rgba(102, 12, 255, 0.6);
+		top: 12px;
+		right: 3px;
+		animation: doubleCicle 30s linear forwards infinite;
+    	transform-origin: 31px;
+	}
+}
+
+.bub1 {
+	top: 68%;
+    left: 15%;
+
+    .bubbleAnimate {
+    	animation: zoomIn 4s ease-in forwards;
+
+    	.bubPink {
+    		background: rgba(102, 12, 255, 0.6);
+		    top: 12px;
+		    right: 18px;
+		    animation: doubleCicle 54s linear forwards infinite;
+		    transform-origin: 42px;
+    	}
+    }
+}
+
+.bub2 {
+	top: 42%;
+    left: 1%;
+
+    .bubbleAnimate {
+		animation: zoomIn 4.1s ease-in forwards;
+	}
+}
+
+.bub3 {
+	top: 45%;
+    right: 19%;
+
+    .bubbleAnimate {
+		animation: zoomIn 3.9s ease-in forwards;
+	}
+}
+
+.bub4 {
+	top: 65%;
+    right: 6%;
+
+    .bubbleAnimate {
+		animation: zoomIn 3.976s ease-in forwards;
+
+		.bubViolet {
+		    top: 11px;
+		    right: 23px;
+		    transform-origin: 40px;
+		}
+
+		.bubPink {
+			top: 12px;
+		    right: 9px;
+		    animation: doubleCicle 80s linear forwards infinite;
+		    transform-origin: 26px;
+		}
+	}
+}
+
+
+/*Author's block styles*/
+.author {
+    width: 850px;
+    margin: auto;
+    overflow: hidden;
+    padding-top: 33px;
+
+    @include respond-to(wideTablet) {
+    	width: 663px;
+    }
+
+    img {
+    	float:left;
+    	position:relative;
+    	z-index:0;
+    	top: 22px;
+    }
+
+    h2.name {
+    	background: #6614ff;
+	    width: 159px;
+	    padding: 5px 22px;
+	    font-size: 25px;
+	    color: #fff;
+	    font-family: 'Pacifico';
+	    font-weight: 100;
+	    margin: 0;
+	    position: relative;
+	    float: left;
+	    z-index: 100;
+	    left: -64px;
+	    top: -9px;
+    	box-shadow: 0 0 29px rgba(0,0,0,0.3);
+    }
+
+    h4.role {
+    	float: left;
+	    background: #9e18fc;
+	    margin: 0;
+	    color: #fff;
+	    padding: 7px 17px;
+	    font-size: 14px;
+	    font-weight: 100;
+	    z-index: 10000000000;
+	    position: relative;
+	    left: -186px;
+	    top: 35px;
+    	box-shadow: 0 0 26px rgba(0,0,0,0.5);
+    }
+
+    .about {
+    	background: #fafafa;
+	    padding: 27px 42px;
+	    padding-top: 82px;
+	    height: 104px;
+	    float: left;
+	    position: relative;
+	    top: -54px;
+	    width: 583px;
+	    left: -28px;
+	    box-shadow: 0 0 29px rgba(0,0,0,0.1);
+	    color: #8A8A8A;
+
+	    @include respond-to(wideTablet) {
+		    padding-top: 66px;
+		    height: 142px;
+		    top: -44px;
+		    width: 396px;
+		    left: -42px;
+	    }
+    }
+}
+/*End Author's block styles*/
+
+
+/*Transaction Page Styles*/
+
+/*header elements' styles*/
+
+body.transaction {
+	background: $bgTransact no-repeat center;
+	background-size:cover;
+
+	header {
+		img {
+			width: 23px;
+		}
+
+		.title {
+			position: relative;
+			top: -3px;
+			left: 11px;
+			border-left: 1px solid #CECECE;
+			padding: 1px 1px;
+			padding-left: 13px;
+		}
+	}
+
+	/*transaction styles page*/
+	.secTitle{
+		margin: 0;
+	    padding-bottom: 3px;
+	    margin-bottom: 21px;
+	    font-size: 24px;
+	    font-weight: 100;
+	    color: #cbc5c5;
+	    padding-top: 28px;
+		background: $visaBG	no-repeat right 9px;
+		background-size: 46px;
+		position: relative;
+    	z-index: 10;
+
+		span {
+			text-align: right;
+		    font-size: 14px;
+		    color: #C1C1C1;
+		    display: inline-block;
+		    float: right;
+		}
+	}
+
+	form {
+		position: relative;
+    	z-index: 10;
+
+		input {
+			font-size: 14px;
+		    padding: 1px 8px;
+		    padding-top: 18px;
+		    padding-left: 35px;
+		    width: 327px;
+		    border: none;
+		    border-bottom: 1px solid #c1c1c1;
+		    margin-bottom: 14px;
+		    box-shadow: 0 1px 1px #ECECEC;
+		    border-radius: 1px;
+		    display: block;
+		    background: transparent;
+		    @include vendor-prefix(transition, border .1s linear);
+
+
+		    &:focus {
+		    	outline:none;
+		    	border-bottom-color: #8511FF;
+		    }
+		}
+
+		#cdHolder {
+			background: url("../resources/images/cdName.png") no-repeat left 10px;
+		}
+
+		#cd {
+			background: url("../resources/images/cd.png") no-repeat left 10px;
+		}
+
+		#date {
+			background: url("../resources/images/date.png") no-repeat left 10px;
+		}
+
+		.cvcWrapper {
+			margin-bottom: 44px;
+			cursor:pointer;
+			position: relative;
+
+			#cvc {
+				padding-left: 1px;
+			    width: 52px;
+			    margin-right: 7px;
+			    margin-bottom: 0;
+			    display: inline-block;
+			}
+
+			span {
+				font-size: 13px;
+			    font-weight: 700;
+			    background: #C1C1C1;
+			    width: 16px;
+			    height: 16px;
+			    display: inline-block;
+			    border-radius: 88px;
+			    text-align: center;
+			    border: 1px solid white;
+			    color: #5A5A5A;
+
+			    &:hover + img {
+			    	display:inline-block;
+			    }
+			}
+
+			img {
+				position: absolute;
+				top: -27px;
+				display:none;
+			}
+		}
+
+		.expDate {
+			border: 1px solid transparent;
+			width: 326px;
+			height: 39px;
+			margin-bottom: 17px;
+			position: relative;
+
+			label {
+				margin-right: 25px;
+				margin-left: 35px;
+				font-size: 14px;
+				color: #A9A9A9;
+			}
+
+			select {
+				border:none;
+				box-shadow: 0 1px 1px #ECECEC;
+				display: inline-block;
+				width: 83px;
+				padding-left: 8px;
+				padding-right: 0;
+				border-radius:0;
+				padding-top: 22px;
+				-webkit-appearance:none;
+				@include vendor-prefix(transition, border .1s linear);
+
+
+			    &:focus {
+			    	outline:none;
+
+			    	+ span.dateBorder {
+			    		border-bottom-color: #8511FF;
+
+			    		&:after {
+			    			border-bottom: 1px solid #8511FF;
+				    		border-right: 1px solid #8511FF;
+			    		}
+			    	}
+			    }
+			}
+
+			span.dateBorder {
+				border-bottom: 1px solid #C1C1C1;
+			    position: absolute;
+			    bottom: 3px;
+			    right: 86px;
+			    width: 83px;
+
+			    &:after {
+					content: "";
+				    position: absolute;
+				    background: #F8F7F7;
+				    border-bottom: 1px solid #C1C1C1;
+				    border-right: 1px solid #C1C1C1;
+				    width: 8px;
+				    height: 8px;
+				    transform: rotate(45deg);
+				    right: 6px;
+				    bottom: -5px;
+				}
+			}
+
+			span.dateBorder.year {
+				right:-1px;
+			}
+		}
+
+		button {
+			font-size: 14px;
+		    background: #FBFBFB;
+		    border: 1px solid #DEDEDE;
+		    padding: 8px 30px;
+		    border-radius: 70px;
+		    color: #7D7D7D;
+		    box-shadow: 1px 1px 1px #EFEEEE;
+
+		    &:focus {
+		    	outline:none;
+		    }
+		}
+	}
+
+	.paypal {
+		padding: 15px;
+	    margin-top: 50px;
+	    position: absolute;
+	    bottom: 43px;
+	    right: -27px;
+
+		a {
+			padding: 12px 24px;
+			border-radius: 1px;
+    		box-shadow: 0 0 6px rgba(0,0,0,0.2);
+			@include diagGrad(#ff9600, #ffba00);
+			color: #585858;
+			font-weight: 100;
+			text-decoration: none;
+			text-shadow: 1px 1px 0 #FFB400;
+
+			span {
+				font-weight:600;
+				font-style: italic;
+			}
+
+			&:hover {
+				box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+			}
+		}
+	}
+
+	.add {
+		background: #5d6267;
+	    padding: 10px;
+	    height: 489px;
+	    width: 570px;
+	    border-radius: 3px;
+	    box-shadow: 0 1px 7px #272727;
+	    position:relative;
+
+	    .circleWrapper {
+		    position: absolute;
+		    top: 0;
+		    bottom: 0;
+		    right: 0;
+		    left: 0;
+		    overflow:hidden;
+		    border-radius: 3px;
+
+		    &:after {
+		    	content: "";
+			    background: #55595D $iconSmallBG repeat center;
+			    position: absolute;
+			    top: -113px;
+			    left: -46px;
+			    padding: 191px;
+			    border-radius: 211px;
+		    }
+	    }
+
+	    img {
+	    	position: relative;
+		    z-index: 10;
+		    top: -37px;
+		    left: 11px;
+	    }
+
+	    p.license {
+		    width: 202px;
+		    font-size: 12px;
+		    color: #B3B3B3;
+		}
+
+		a {
+		    font-size: 12px;
+		    color: #FFCC00;
+		    position: relative;
+    		z-index: 1;
+
+		    &:hover {
+		    	color:#FFEF00;
+		    }
+		}
+
+		.priceWrapper {
+		    border-bottom: 1px solid #4e5356;
+		    box-shadow: 0 1px 0 #62666B;
+		    margin-top: 23px;
+		    padding-bottom: 5px;
+
+		    span {
+		    	color: #878c91;
+    			display: block;
+		    }
+
+		    .price {
+		    	color: #e2e2e2;
+			    font-size: 34px;
+			    font-weight: 100;
+			    text-shadow: 0 1px 1px #3E3E3E;
+		    }
+		}
+
+		.trialQuestion {
+			color: white;
+    		font-size: 10px;
+    		margin-left: 3px;
+		}
+
+		a.trialBtn {
+			padding: 6px 15px;
+		    font-size: 11px;
+		    text-decoration: none;
+		    color: #fff;
+		    border-radius: 50px;
+			@include diagGrad(#0066ff, #007eff);
+		}
+	}
+
+	footer {
+		padding: 14px;
+	    position: fixed;
+	    bottom: 0;
+	    width: 100%;
+
+	    a {
+	    	margin-right: 15px;
+		    border-right: 1px solid darkgrey;
+		    padding-right: 18px;
+		    padding-bottom: 3px;
+		    margin-left: 197px;
+		    text-decoration: none;
+		    color: #A0A0A0;
+
+		    &:hover {
+		    	text-decoration:underline;
+		    }
+	    }
+
+	    span {
+		    height: 16px;
+		    text-align: center;
+		    width: 16px;
+		    border-radius: 100px;
+		    padding: 5px;
+		    margin: 0 5px;
+		    color:white;
+		    cursor:pointer;
+
+		    &:hover {
+		    	box-shadow: 0 0 3px #656565;
+		    }
+	    }
+
+	    .fa-facebook {
+	    	background:#2E70CA;
+	    }
+
+	    .fa-twitter {
+	    	background:#00D6FF;
+	    }
+	}
+
+}
+/*End trasaction page styles*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
