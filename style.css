@@ -1,0 +1,449 @@
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/fonts/inter-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/fonts/inter-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/fonts/inter-semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/fonts/inter-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* style.css - Web-safe fonts, two-column responsive CV layout matching PDF look */
+:root{
+  --accent:#0b63a7;
+  --muted:#666;
+  --gray:#808080;
+  --text-gray: rgb(14, 16, 26);
+  --max-width:1000px;
+  --rem: 14;
+  --bar-height: 4px;
+  --bar-bg: #e6e6e6;
+  --bar-fill: #1e232b; /* blue */
+  --bar-radius: 12px;
+}
+
+*{
+  font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Helvetica Neue, sans-serif, Arial;
+  font-feature-settings: 'ss01', 'cv05', 'cv07', 'cv08';
+  box-sizing:border-box
+}
+
+body{
+  font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Helvetica Neue, sans-serif, Arial;
+  font-feature-settings: 'ss01', 'cv05', 'cv07', 'cv08';
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  background:#fff;
+  color:#111;
+  padding:20px;
+  display:flex;
+  justify-content:center;
+}
+
+p {
+  color:var(--text-gray);
+  font-size: calc(1.0625px * var(--rem));
+  font-weight: 400;
+  letter-spacing: calc(0px * var(--rem));
+  line-height: calc(2px * var(--rem));
+}
+
+.cv{
+  width:100%;
+  max-width:var(--max-width);
+  /* border:1px solid #e6e6e6; */
+  padding:28px;
+  /* box-shadow: 0 6px 18px rgba(0,0,0,0.05); */
+}
+.cv-header{
+  display: grid;
+  align-items: start;  
+  grid-template-columns: 1fr 4fr;  /* Set fractional widths here */
+  gap: 16px;
+  border-bottom:2px 
+  solid #f0f0f0; 
+  padding-bottom:12px; 
+  margin-bottom:18px
+}
+
+.header-content{
+  grid-column: 2;
+}
+
+.profile img {
+  width: 100%;
+  border-radius: 4px;
+  display: block;
+}
+
+.profession {
+  margin: 0;
+  background: #1d1b1b;
+  color: #e0e0e0;
+  padding: 4px 15px;
+  width: max-content;
+  position: relative;
+}
+
+.profession span {
+  display: block;
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  bottom: -23px;
+  left: 85px;
+  border-left: 15px solid transparent;
+  border-right: 0px solid transparent;
+  border-top: 34px solid #1d1b1b;
+}
+
+.name{
+  font-size:42px; 
+  line-height: 40px;
+  margin:0; 
+  letter-spacing:0.5px;
+  font-family: "Outfit", sans-serif !important;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.contact{
+  margin:6px 0 0; 
+  color:var(--muted); 
+  font-size:14px
+}
+
+.about h2{margin-top:0}
+.lead{margin:8px 0 0; line-height:1.45}
+.more{margin-top:10px; display:block}
+#about-more{display:block}
+
+.columns{
+  display:grid;
+  grid-template-columns: 2fr 1fr;
+  gap:28px;
+  margin-top:18px;
+}
+
+/* Left column content */
+.left h2, .right h2{margin:12px 0 6px; font-size:16px}
+.exp, .edu, .skills, .other{font-size:14px; color:#222; line-height:1.5}
+
+.edu h1 {
+  font-weight:300;
+}
+
+.skill-wrapper {
+  margin-bottom:30px;
+}
+
+.teams-wrapper{
+  margin-bottom:30px;
+}
+
+.skill-wrapper h4 {
+  margin: 10px 0;
+  font-weight: 500;
+}
+
+.langs-wrapper {
+  margin-bottom:40px;
+}
+
+.right{
+  border-left:1px dashed #efefef;
+  padding-left:18px;
+}
+.expWrapper {
+  margin-bottom:45px;
+}
+
+.exp {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.edu-details-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.exp p {
+  text-align: right;
+  color:var(--muted);
+}
+
+.exp h3 {
+  margin-bottom:0;
+}
+
+.exp h3 span {
+  display: block;
+  font-weight: 400;
+  font-size: 12px;
+  color:var(--muted);
+}
+
+ul {
+  list-style: none;      /* removes bullets */
+  padding-left: 0;  
+}
+
+ul li {
+  background: url(./assets/bullet.svg) no-repeat left 24%;
+  background-size: 14px;
+  margin-bottom: 20px;
+  padding-left: 24px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+table {
+  width: 100%;
+}
+table th {
+  font-size: 0.8em;
+  font-weight: 600;
+  text-align: left !important;
+}
+
+td {
+    font-size: 0.85em;
+}
+
+.recog-wrapper {
+  display: grid;
+  grid-template-columns: 50px auto;
+  align-items: center;
+  gap: 8px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+}
+
+.recog-icon {
+    width: 40px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.recog-icon img {
+    width: 100%;
+    height: auto;
+}
+
+.talent-wrapper {
+    display: grid;
+    grid-template-columns: 80px auto;
+    align-items: center;
+    gap: 8px;
+    margin: 20px 0;
+}
+
+.skill-icon{
+    width: 70px;
+    height: 70px;
+    border: 1px solid var(--bar-fill);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.skill-icon img {
+    width: 60%;
+    height: auto;
+}
+
+.skill-text h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.team-icon {
+  width: max-content;
+  padding: 0 13px;
+  height: 38px;
+  border: 1px solid #b2b2b2;
+  border-radius: 50px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin: 4px 0;
+}
+
+/* Button */
+.btn{
+  display:inline-block;
+  margin-top:10px;
+  padding:8px 12px;
+  background:transparent;
+  color:var(--accent);
+  border:1px solid var(--accent);
+  border-radius:4px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.detailsBlocksWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.detailsBlock:first-child {
+    border-right: 2px solid #eaeaea;
+}
+
+.detailsBlock p {
+    margin: 2px;
+}
+
+.innerDetailBlock {
+  color:var(--gray);
+}
+
+.progress-wrap{
+  max-width:520px; 
+  margin: 10px 0;
+}
+
+.progress-flex {
+  display: grid;
+  align-items: center;  
+  grid-template-columns: 2fr 3.5fr;  /* Set fractional widths here */
+  gap: 5px;
+}
+
+.progress-flex .label {
+  margin:0 !important;
+} 
+
+
+.progress{
+width:100%;
+background:var(--bar-bg);
+height:var(--bar-height);
+border-radius:var(--bar-radius);
+box-shadow: inset 0 1px 2px rgba(0,0,0,0.04);
+overflow:hidden;
+position:relative;
+}
+
+
+.progress__fill{
+height:100%;
+width:0%; /* start at 0, JS will set to target */
+background: linear-gradient(90deg, var(--bar-fill), color-mix(in srgb, var(--bar-fill) 85%, white));
+border-radius:var(--bar-radius);
+transition: width 1.2s cubic-bezier(.22,.9,.29,1); /* smooth ease-out */
+display:flex;
+align-items:center;
+justify-content:flex-end;
+padding-right:10px;
+box-sizing:border-box;
+color:white;
+font-weight:600;
+font-size:0.9rem;
+-webkit-font-smoothing:antialiased;
+}
+
+
+.label{
+  margin-top:20px;
+  margin-bottom:5px;
+  font-size:0.8rem
+}
+
+/* Responsive: stack on narrow screens */
+@media (max-width:700px){
+  .cv {padding:0}
+  .columns{grid-template-columns:1fr}
+  .right{border-left:none; padding-left:0; margin-top:16px}
+  .name{
+    font-size: 32px;
+    line-height: 30px;
+  }
+  .profession {
+    font-size: 14px;
+  }
+  .profession span {
+    bottom: -14px;
+    left: 67px;
+    border-left: 10px solid transparent;
+    border-right: 0px solid transparent;
+    border-top: 20px solid #1d1b1b;
+  }
+
+  .cv-header {
+    display:block;
+  }
+  .profile img {
+    width: 190px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width:500px){
+
+  .name {
+    font-size: 25px;
+    line-height: 26px;
+  }
+
+  .profession {
+    padding: 6px;
+    font-size: 14px;
+  }
+
+  .profession span {
+    bottom: -14px;
+    left: 50px;
+  }
+
+  .detailsBlocksWrapper {
+    display:block;
+  }
+  .detailsBlock:first-child {
+    border:none;
+    margin-bottom:10px;
+  }
+}
+
