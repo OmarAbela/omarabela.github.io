@@ -94,6 +94,24 @@ p {
   grid-column: 2;
 }
 
+a#downloadBtn {
+    display: block;
+    width: max-content;
+    position: absolute;
+    top: 17px;
+    right: 0;
+    line-height: 1px;
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 17px;
+    border-radius: 6px;
+    background: #dfdfdf;
+}
+
+a#downloadBtn img {
+  width:23px;
+}
+
 .profile img {
   width: 100%;
   border-radius: 4px;
