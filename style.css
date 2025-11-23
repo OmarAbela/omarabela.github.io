@@ -225,6 +225,7 @@ ul li {
   padding-left: 24px;
   color: var(--muted);
   font-size: 14px;
+  word-wrap: break-word;
 }
 
 table {
@@ -444,6 +445,28 @@ font-size:0.9rem;
   .detailsBlock:first-child {
     border:none;
     margin-bottom:10px;
+  }
+
+  .exp {
+    gap:5px;
+    grid-template-columns: 3fr 2fr;
+  }
+
+  .exp p {
+    font-size:12px;
+  }
+
+  h3 {
+    font-size: 15px;
+  }
+
+  .langs-wrapper {
+    width: 83vw;
+    overflow-x: scroll;
+  }
+
+  .expWrapper {
+    width: 86vw;
   }
 }
 
