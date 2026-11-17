@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;600;700;750&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261117">
+  <link rel="stylesheet" href="style.css?v=20261117b">
 
 </head>
 <body>
@@ -17,19 +17,20 @@
   <div class="site-shell" id="top">
   <header class="site-header">
     <a class="wordmark" href="#top" aria-label="Omar Zawia Abela home">omar<span>.</span></a>
-    <nav class="case-nav" id="case-menu" aria-label="Case studies">
-      <span class="nav-label">CASE STUDIES</span>
-      <a href="https://omar-slotspinner-product-story.karlandliam.chatgpt.site" target="_blank" rel="noopener noreferrer">SlotSpinner <span aria-hidden="true">↗</span></a>
-      <a href="https://omar-slotspinner-product-story.karlandliam.chatgpt.site/#integrations" target="_blank" rel="noopener noreferrer">KYC &amp; UAT <span aria-hidden="true">↗</span></a>
-      <a href="https://omar-slotspinner-product-story.karlandliam.chatgpt.site/#challenges" target="_blank" rel="noopener noreferrer">Payments <span aria-hidden="true">↗</span></a>
+    <nav class="case-nav" aria-label="Case studies">
+      <div class="case-dropdown">
+        <button class="case-trigger" type="button" aria-expanded="false" aria-controls="case-menu">Case Studies <span class="case-chevron" aria-hidden="true">⌄</span></button>
+        <div class="case-dropdown-panel" id="case-menu" inert>
+          <a href="/case-studies/whitelabel-casino/">Whitelabel Casino <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
     </nav>
     <a id="downloadBtn" class="download-button" href="./omarabela-github-io-.pdf" download="Omar-Zawia-Abela-CV.pdf" aria-label="Download CV as PDF"><span>Download CV</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 18L18 6M6 6h12v12"/></svg></a>
-    <button class="menu-toggle" aria-label="Open case-study menu" aria-expanded="false" aria-controls="case-menu"><span></span><span></span></button>
   </header>
 
   <main class="cv" id="cv-content">
     <header class="cv-header">
-      <div class="profile"><div class="portrait-frame"><img src="./assets/profile.webp" alt="Omar Zawia Abela" width="340" height="340" /></div><span class="portrait-orbit" aria-hidden="true"></span><span class="portrait-spark" aria-hidden="true">✳</span><div class="portrait-note" aria-hidden="true"><span>PRODUCT THINKING.</span><strong>Technical depth.</strong></div></div>
+      <div class="profile"><div class="portrait-frame"><img src="./assets/profile.webp" alt="Omar Zawia Abela" width="340" height="340" /></div><span class="portrait-orbit" aria-hidden="true"></span><span class="portrait-spark" aria-hidden="true">✳</span></div>
       <div class="header-content">
         <p class="profession"><span class="status-dot" aria-hidden="true"></span>Technical Product Manager</p>
         <h1 class="name">Omar Zawia<br>Abela<span class="name-dot">.</span></h1><div class="sector-tags" aria-label="Sectors"><span>iGaming</span><span>Affiliate</span><span>Fintech</span></div><div class="hero-actions"><a class="primary-button" href="#experience">Explore my experience <span aria-hidden="true">↓</span></a><a class="quiet-link" href="mailto:omarabela@gmail.com">Get in touch <span aria-hidden="true">↗</span></a></div>
@@ -928,6 +929,6 @@
   </main>
   </div>
 
-  <script src="script.js?v=20261117"></script>
+  <script src="script.js?v=20261117b"></script>
 </body>
 </html>

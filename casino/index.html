@@ -1,0 +1,5 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>SlotSpinner — Portfolio Demo</title><link rel="icon" href="/demo/ss_favicon.svg"><link rel="stylesheet" href="/assets/index-BnNI1yxr.css"></head><body><div id="root"></div><script>
+const route = new URLSearchParams(location.search).get('path');
+if (route && /^\/(?!\/)/.test(route)) history.replaceState(null, '', route);
+else if(location.pathname.endsWith('/')) history.replaceState(null, '', location.pathname.slice(0,-1) + location.search + location.hash);
+</script><script type="module" src="/assets/index-B4O3fYzb.js"></script></body></html>
