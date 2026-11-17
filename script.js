@@ -1,82 +1,76 @@
-
-// script.js - Read more toggle for About Me
-document.addEventListener('DOMContentLoaded', function(){
-  const btn = document.getElementById('read-more');
+// Presentation controls. The CV content and its original skill levels stay in HTML.
+document.addEventListener('DOMContentLoaded', () => {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const readMore = document.getElementById('read-more');
   const more = document.getElementById('about-more');
-
-  // If there's no extra content, hide the button
-  if(!more || more.innerHTML.trim() === ''){
-    btn.style.display = 'none';
-    return;
+  if (readMore && more) {
+    more.style.display = 'none';
+    readMore.addEventListener('click', () => {
+      const expanded = readMore.getAttribute('aria-expanded') !== 'true';
+      readMore.setAttribute('aria-expanded', String(expanded));
+      more.style.display = expanded ? 'block' : 'none';
+      readMore.textContent = expanded ? 'Show less' : 'Read more';
+    });
   }
 
-  let expanded = true;
-  // Initially collapse (show only first paragraph), since we already show lead separately
-  more.style.display = 'none';
-  expanded = false;
-  btn.textContent = 'Read more';
-
-  btn.addEventListener('click', function(){
-    expanded = !expanded;
-    if(expanded){
-      more.style.display = 'block';
-      btn.textContent = 'Show less';
-    } else {
-      more.style.display = 'none';
-      btn.textContent = 'Read more';
-      // Scroll to about top to keep UX tidy on mobile
-      document.querySelector('.about').scrollIntoView({behavior:'smooth'});
+  const header = document.querySelector('.site-header');
+  const menu = document.querySelector('.menu-toggle');
+  menu?.addEventListener('click', () => {
+    const expanded = menu.getAttribute('aria-expanded') !== 'true';
+    menu.setAttribute('aria-expanded', String(expanded));
+    header.classList.toggle('menu-open', expanded);
+  });
+  document.querySelectorAll('.case-nav a').forEach(link => link.addEventListener('click', () => {
+    menu?.setAttribute('aria-expanded', 'false');
+    header.classList.remove('menu-open');
+  }));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && menu?.getAttribute('aria-expanded') === 'true') {
+      menu.setAttribute('aria-expanded', 'false');
+      header.classList.remove('menu-open');
+      menu.focus();
     }
   });
-});
 
+  const animateProgress = progress => {
+    const target = Math.max(0, Math.min(100, Number(progress.dataset.target) || 0));
+    const fill = progress.querySelector('.progress__fill');
+    if (!fill) return;
+    progress.setAttribute('aria-valuenow', String(target));
+    const label = progress.closest('.progress-wrap')?.querySelector('.label')?.textContent.trim();
+    if (label) progress.setAttribute('aria-label', label);
+    fill.style.transition = reduceMotion.matches ? 'none' : `width ${Number(progress.dataset.duration) || 900}ms cubic-bezier(.22,.9,.29,1)`;
+    requestAnimationFrame(() => { fill.style.width = `${target}%`; });
+  };
 
-// Utility: clamp number to 0..100
-    const clamp = v => Math.max(0, Math.min(100, Number(v) || 0));
-
-    // Animate all progress bars on DOMContentLoaded
-    window.addEventListener('DOMContentLoaded', () => {
-      const progressEls = document.querySelectorAll('.progress');
-
-      progressEls.forEach(progress => {
-        const fill = progress.querySelector('.progress__fill');
-        if (!fill) return; // skip if structure unexpected
-
-        const target = clamp(progress.dataset.target);
-        const duration = Number(progress.dataset.duration) || 1200;
-
-        // set per-bar transition duration
-        fill.style.transition = `width ${duration}ms cubic-bezier(.22,.9,.29,1)`;
-
-        // helper to update one bar (sets width, text and aria)
-        function setProgress(percent){
-          const p = clamp(percent);
-          fill.style.width = p + '%';
-          // optionally hide text if too small to avoid overflow
-          progress.setAttribute('aria-valuenow', String(Math.round(p)));
-        }
-
-        // ensure starting at 0 then trigger to target in next animation frame
-        setProgress(0);
-        // double rAF ensures layout applied then transition runs reliably
-        requestAnimationFrame(() => requestAnimationFrame(() => setProgress(target)));
-      });
+  if ('IntersectionObserver' in window && !reduceMotion.matches) {
+    document.documentElement.classList.add('js-ready');
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      entry.target.querySelectorAll('.progress').forEach(animateProgress);
+      observer.unobserve(entry.target);
+    }), { threshold: 0.04 });
+    document.querySelectorAll('.left > .expWrapper,.skill-wrapper,.teams-wrapper,.edu,.langs-wrapper,.talent-wrapper,.recog-wrapper').forEach(element => {
+      element.classList.add('reveal');
+      observer.observe(element);
     });
+  } else {
+    document.querySelectorAll('.progress').forEach(animateProgress);
+  }
 
-    // Optional global API if other scripts want to update a specific bar:
-    // usage: window.simpleProgressBar.update(progressElementOrSelector, value)
-    window.simpleProgressBar = {
-      update(elOrSelector, value){
-        let el = elOrSelector;
-        if (typeof elOrSelector === 'string') el = document.querySelector(elOrSelector);
-        if (!el) return;
-        const progress = el.classList && el.classList.contains('progress') ? el : el.closest('.progress');
-        if (!progress) return;
-        const fill = progress.querySelector('.progress__fill');
-        if (!fill) return;
-        const val = clamp(value);
-        fill.style.width = val + '%';
-        fill.textContent = Math.round(val) + '%';
-        progress.setAttribute('aria-valuenow', String(Math.round(val)));
-      }
-    };
+  // Ensure print includes every section and the existing progress values.
+  window.addEventListener('beforeprint', () => {
+    document.querySelectorAll('.reveal').forEach(element => element.classList.add('is-visible'));
+    document.querySelectorAll('.progress').forEach(animateProgress);
+  });
+  let queued = false;
+  window.addEventListener('scroll', () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => {
+      header?.classList.toggle('scrolled', window.scrollY > 40);
+      queued = false;
+    });
+  }, { passive: true });
+});
